@@ -1,6 +1,4 @@
 
-
-
 document.addEventListener("DOMContentLoaded", function() {
   // Use the History API to navigate to another page without a full reload
     window.history.pushState({}, "", "./index.html");
@@ -12,13 +10,13 @@ const updateWithdraw = () => {
   let currentBalanceBox = document.getElementById("balanceAmound").textContent;
   let withdrawBox = document.getElementById("withdrawBox").textContent;
 
-  if (isNaN(parseInt(inputWithdraw.value)) || parseInt(inputWithdraw.value) > parseInt(currentBalanceBox)) {
+  if (isNaN(parseFloat(inputWithdraw.value)) || parseFloat(inputWithdraw.value) > parseFloat(currentBalanceBox)) {
     alert("Sorry! You have insufficient balance");
     return;
   }
 
-  const newBalance = parseInt(currentBalanceBox) - parseInt(inputWithdraw.value);
-  const newWithdraw = parseInt(withdrawBox) + parseInt(inputWithdraw.value);
+  const newBalance = parseFloat(currentBalanceBox) - parseFloat(inputWithdraw.value);
+  const newWithdraw = parseFloat(withdrawBox) + parseFloat(inputWithdraw.value);
 
   // Set the New Status
   document.getElementById("balanceAmound").textContent = newBalance;
@@ -38,15 +36,15 @@ const updateDeposit = () => {
   //   alert("Please enter a valid amount");
   //   return;
   // }
- if (isNaN(parseInt(inputDeposit.value)) || parseInt(inputDeposit.value) < 0) {
+ if (isNaN(parseFloat(inputDeposit.value)) || parseFloat(inputDeposit.value) < 0) {
     alert("Please enter a valid amount");
     return;
   }
 
   console.log("ok");
 
-  const newBalance = parseInt(inputDeposit.value) + parseInt(currentBalanceBox);
-  const newDeposit = parseInt(depositBox) + parseInt(inputDeposit.value);
+  const newBalance = parseFloat(inputDeposit.value) + parseFloat(currentBalanceBox);
+  const newDeposit = parseFloat(depositBox) + parseFloat(inputDeposit.value);
 
   // Set the New Status
   document.getElementById("balanceAmound").textContent = newBalance;
